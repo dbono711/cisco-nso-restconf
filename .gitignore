@@ -1,0 +1,8 @@
+.venv
+.vscode
+.pytest_cache
+.code-workspace
+__pycache__
+*.code-workspace
+*.DS_Store
+user.py
