@@ -5,6 +5,7 @@
 __pycache__
 *.code-workspace
 *.DS_Store
-client_simple_get.py
+client_simple.py
 client_vlan_life_cyle.py
-device.py
+client_service_life_cyle.py
+device_helper_simple.py

@@ -22,10 +22,8 @@ class Devices:
 
     def get_device_ned_ids(self) -> Dict[str, Any]:
         """
-        Retrieves the list of NED IDs from in the Cisco NSO system.
-
         This method sends a GET request to the RESTCONF API to retrieve the available
-        Network Element Driver (NED) IDs in NSO.
+        Network Element Driver (NED) IDs in Cisco NSO.
 
         Returns:
             Dict[str, Any]: A dictionary containing the NED IDs.
@@ -36,4 +34,20 @@ class Devices:
             >>> print(ned_ids)
         """
         resource = "tailf-ncs:devices/ned-ids"
+        return self.client.get(resource).json()
+
+    def get_device_groups(self) -> Dict[str, Any]:
+        """
+        This method sends a GET request to the RESTCONF API to retrieve configured
+        device groups in Cisco NSO.
+
+        Returns:
+            Dict[str, Any]: A dictionary containing the device groups.
+
+        Example:
+            >>> devices_helper = Devices(client)
+            >>> ned_ids = devices_helper.get_device_groups()
+            >>> print(ned_ids)
+        """
+        resource = "tailf-ncs:devices/device-group"
         return self.client.get(resource).json()
