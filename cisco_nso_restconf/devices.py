@@ -51,3 +51,22 @@ class Devices:
         """
         resource = "tailf-ncs:devices/device-group"
         return self.client.get(resource).json()
+
+    def get_device_platform(self, device_name: str) -> Dict[str, Any]:
+        """
+        This method sends a GET request to the RESTCONF API to retrieve platform
+        information for a device configured in NSO.
+
+        Args:
+            device_name (str): The hostname of the device in NSO.
+
+        Returns:
+            Dict[str, Any]: A dictionary containing the device platform information.
+
+        Example:
+            >>> devices_helper = Devices(client)
+            >>> device1_platform = devices_helper.get_device_platform("device1")
+            >>> print(device1_platform)
+        """
+        resource = f"tailf-ncs:devices/device={device_name}/platform"
+        return self.client.get(resource).json()
