@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cisco-nso-restconf"
-version = "1.0.0"
+version = "1.0.1"
 description = "A Python client library for interacting with the Cisco NSO RESTCONF API"
 authors = ["Darren Bono <dbono215@gmail.com>"]
 license = "MIT"
@@ -10,7 +10,7 @@ repository = "https://github.com/dbono711/cisco-nso-restconf"
 keywords = ["RESTCONF", "Cisco", "NSO", "client", "API"]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 requests = "^2.32.3"
 
 [tool.poetry.group.dev.dependencies]
