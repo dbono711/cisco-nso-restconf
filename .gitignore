@@ -5,7 +5,3 @@
 __pycache__
 *.code-workspace
 *.DS_Store
-client_simple.py
-client_vlan_life_cyle.py
-client_service_life_cyle.py
-device_helper_simple.py
