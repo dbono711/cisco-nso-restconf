@@ -50,10 +50,10 @@ There are a number of [examples](examples) provided for utilizing the Client cla
 
 ## Contributing
 
-We welcome contributions! Feel free to open issues or submit pull requests. For development, we recommend using Poetry to manage dependencies and packaging.
+We welcome contributions! Feel free to open issues or submit pull requests. For development, we recommend using [UV](https://docs.astral.sh/uv/) to manage dependencies and packaging.
 
 ```shell
-poetry install
+uv sync
 ```
 
 ## License

@@ -1,27 +1,31 @@
-[tool.poetry]
+[project]
 name = "cisco-nso-restconf"
-version = "1.0.1"
+version = "1.0.2"
 description = "A Python client library for interacting with the Cisco NSO RESTCONF API"
-authors = ["Darren Bono <dbono215@gmail.com>"]
-license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/dbono711/cisco-nso-restconf"
-repository = "https://github.com/dbono711/cisco-nso-restconf"
-keywords = ["RESTCONF", "Cisco", "NSO", "client", "API"]
-
-[tool.poetry.dependencies]
-python = "^3.10"
-requests = "^2.32.3"
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.3.2"
-pytest-cov = "^5.0.0"
-flake8 = "^7.1.1"
-black = "^24.8.0"
-mypy = "^1.11.2"
-pytest-mock = "^3.14.0"
-paramiko = "^3.5.0"
+authors = [
+    {name = "Darren Bono", email = "dbono215@gmail.com"},
+]
+requires-python = ">=3.13,<4.0"
+dependencies = [
+    "requests >=2.32.3",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest >=8.3.2",
+    "pytest-cov >=5.0.0",
+    "ruff >=0.7.4",
+    "flake8 >=7.1.1",
+    "black >=24.8.0",
+    "mypy >=1.11.2",
+    "pytest-mock >=3.14.0",
+    "paramiko >=3.5.0",
+]
+
+[tool.uv]
+default-groups = ["dev"]
