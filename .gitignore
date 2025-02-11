@@ -1,8 +1,9 @@
+*.code-workspace
+*.DS_Store
+*.egg-info
 .venv
 .vscode
 .pytest_cache
-.code-workspace
+.python-version
 __pycache__
-*.code-workspace
-*.DS_Store
 dist/

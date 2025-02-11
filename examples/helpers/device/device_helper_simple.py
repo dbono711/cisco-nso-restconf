@@ -28,9 +28,9 @@ try:
     print(device_groups)
     print()
 
-    dc01leaf01_platform = devices_helper.get_device_platform("dc01leaf01")
+    p_central_platform = devices_helper.get_device_platform("p_central")
     print("---DEVICE PLATFORM---")
-    print(dc01leaf01_platform)
+    print(p_central_platform)
     print()
 
 except ValueError as val_err:
