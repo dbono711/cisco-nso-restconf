@@ -46,7 +46,17 @@ When using the NSORestconfClient, it’s important to close the session when you
 
 ## Examples
 
-There are a number of [examples](examples) provided for utilizing the Client classes and various Helper classes, such as the ```Devices``` class. The examples are intended to showcase basic use cases/workflows for acheiving a specific function in NSO, such as retreiving NED ID's, device groups, life cycle of a VLAN resource, life cycle of a service, and so on.
+There are a number of [examples](examples) provided for utilizing the Client classes and various Helper classes, such as the ```Devices``` class. The examples are intended to showcase basic use cases/workflows for achieving a specific function in NSO, such as retrieving NED ID's, device groups, life cycle of a VLAN resource, life cycle of a service, and so on.
+
+### Running Examples
+
+To run the examples, you'll need to install the development dependencies which include the `rich` library for enhanced terminal output. Use [UV](https://docs.astral.sh/uv/) to install these dependencies:
+
+```shell
+uv sync
+```
+
+This will install all required dependencies, including those needed for the examples. Without installing the development dependencies, the examples that use the `rich` library for output formatting will not work.
 
 ## Contributing
 
