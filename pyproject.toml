@@ -1,6 +1,7 @@
 [project]
 name = "cisco-nso-restconf"
-version = "1.0.4"
+version = "1.0.5"
+license = "MIT"
 description = "A Python client library for interacting with the Cisco NSO RESTCONF API"
 readme = "README.md"
 authors = [

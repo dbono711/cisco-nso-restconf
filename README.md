@@ -7,7 +7,7 @@ This Python library provides an interface for interacting with the Cisco Network
 ## Features
 
 * **RESTCONF API Access:** Use the [NSORestconfClient](cisco_nso_restconf/client.py) class to make raw GET, POST, & DELETE requests to any RESTCONF ```/data``` resource.
-* **Utility Classes:** Use pre-built helper classes, such as the [Devices](cisco_nso_restconf/devices.py) class, to simplify common operations, like fetching all device NED ID's.
+* **Utility Classes:** Use pre-built helper classes, such as the [Devices](cisco_nso_restconf/devices.py) class, or [Query](cisco_nso_restconf/query.py) class, to simplify common operations, like fetching all device NED ID's.
 
 ## Requirements
 
@@ -39,6 +39,7 @@ To make the process easier, the library also provides utility classes for specif
 | Class   | Description                                            |
 |---------|--------------------------------------------------------|
 | Devices | Interact with the NSO ```tailf-ncs:devices``` resource |
+| Query   | Interact with the NSO ```tailf-ncs:query``` resource   |
 
 ### Closing Sessions
 
