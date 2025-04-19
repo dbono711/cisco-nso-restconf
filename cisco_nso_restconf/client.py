@@ -19,6 +19,7 @@ class NSORestconfClient:
     Attributes:
         _DATA_PATH (str): The base path for accessing RESTCONF data resources.
         _OPERATIONS_PATH (str): The base path for accessing RESTCONF operations.
+        _QUERY_PATH (str): The base path for accessing RESTCONF query resources.
         _VALID_PARAMS (dict): A dictionary containing valid query parameters as keys
             and their valid values as lists. For parameters that do not require values
             (e.g., 'no-out-of-sync-check'), the value is set to `None`.
@@ -52,6 +53,7 @@ class NSORestconfClient:
 
     _DATA_PATH = "data"
     _OPERATIONS_PATH = "operations"
+    _QUERY_PATH = "tailf/query"
     _VALID_PARAMS = {
         "dry-run": ["native", "cli", "xml"],
         "no-out-of-sync-check": [None],
@@ -259,6 +261,45 @@ class NSORestconfClient:
         response.raise_for_status()
 
         return response
+
+    def query(self, payload: Dict[str, Any]) -> Any:
+        """
+        Sends a query to NSO using the NSO Query API and returns the result.
+        The Query API consists of a number of RPC operations to start
+        queries, fetch chunks of the result from a query, restart a query,
+        and stop a query
+
+        Args:
+            payload (Dict[str, Any]): The payload of the query.
+
+        Returns:
+            List[Dict]: The result of the query found in
+            tailf-rest-query:query-result["result"].
+
+        Raises:
+            HTTPError: If the request to the server returns a status code that indicates a failure.
+            JSONDecodeError: If the response cannot be parsed as JSON.
+        
+        Example:
+            >>> client = NSORestconfClient(
+                        scheme="http",
+                        address="localhost",
+                        port=8080,
+                        timeout=10,
+                        username="admin",
+                        password="admin",
+                    )
+            >>> response = client.query({"tailf-rest-query:immediate-query": {"foreach": "/devices/device/platform", "select": [{"label": "name", "expression": "../name", "result-type": ["string"]}, {"label": "address", "expression": "../address", "result-type": ["string"]}, {"label": "os", "expression": "name", "result-type": ["string"]}, {"label": "version", "expression": "version", "result-type": ["string"]}, {"label": "model", "expression": "model", "result-type": ["string"]}, {"label": "serial_number", "expression": "serial-number","result-type": ["string"]}]}})
+            >>> print(response)
+        """
+        url = f"{self.base_url}/{self._QUERY_PATH}"
+        if not payload:
+            raise ValueError("Payload cannot be empty")
+        
+        response = self.session.post(url, data=json.dumps(payload))
+        response.raise_for_status()
+        
+        return response.json()["tailf-rest-query:query-result"].get("result")
 
     def delete(
         self,
